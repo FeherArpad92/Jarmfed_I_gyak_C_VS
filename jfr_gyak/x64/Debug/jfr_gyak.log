@@ -1,0 +1,3 @@
+﻿  main.c
+C:\Users\FeherArpad\Documents\FeherArpad\jfr_gyak\jfr_gyak\main.c(88,8): warning C4305: 'initializing': truncation from 'double' to 'float'
+  jfr_gyak.vcxproj -> C:\Users\FeherArpad\Documents\FeherArpad\jfr_gyak\x64\Debug\jfr_gyak.exe
