@@ -1,11 +1,11 @@
 /******************************************************************************
- * Created: 2018. 02. 20. 14:00
- * Author : Fehér Árpád
+ * Created:
+ * Author :
 ******************************************************************************/
 /******************************************************************************
 * Include files
 ******************************************************************************/
-#include <stdio.h>
+#include<stdio.h>
 
 /******************************************************************************
 * Macros
@@ -20,8 +20,7 @@
 /******************************************************************************
 * Global Variables
 ******************************************************************************/
-int a = 0;
-int b = 10;
+
 
 /******************************************************************************
 * External Variables
@@ -46,77 +45,65 @@ int b = 10;
 ******************************************************************************/
 int main(void)
 {
-	//printf("Hello World!\n kovetkezo sor");
-	//printf("Adjon meg egy erteket: ");
-	//scanf_s("%d", &a);
-	//printf("A beolvasott ertek: %d %d", a, b);
+	int a = 0, b;
+	//double d = 0.56;
+	//double g = 0.78;
 
+	b = 2;
+	b *= b;
 
-	//int c = 0;
+	printf("Hello world!\nKerem a szamot: ");
+	scanf_s("%d", &a);
+
 	/*
-	scanf_s("%d", &c);
-	printf("A beolvasott ertek: %d\n", c);
-	c = 2;
-	printf("ertek: %d\n", c);
-	c++;
-	c = c + 1;
-	c += 1;
-	c--;
-	printf("ertek: %d\n", c);
+	printf("A szam erteke: %d, a masodik szam: %d\n", a, b);
+	printf("%.100f, %lf", d, g);
+	*/
 
-	printf("Adja meg d erteket: ");
-	int d = 0;
-	scanf_s("%d", &d);
+	/*
+	b = (a < 5) ? 2 : 7;
 
-	c = (d<5) ? 3 : 4;
-
-	if (d < 5)
+	if (a < 5)
 	{
-		c = 3;
-		d = 5;
+		b = 2;
+		a = 12;
 	}
 	else
 	{
-		c = 4;
+		b = 7;
+		a = 120;
 	}
 
-	if (d < 5) c = 3; else c = 4;
+	if (a < 5) b = 2; else b = 7;
 
-	printf("c: %d\n", c);
+	printf("b erteke: %d",b);
 	*/
+	switch(a)
+	{
+		case 1:
+		{
+			printf("1-es ág");
+			break;
+		}
 
-	float r = 1.4;
-	double w = 1.5;
+		case 10:
+		{
+			break;
+			printf("10-es ág");
+			
+		}
 
-	printf("r erteke: %.2f, w erteke: %f\n", r, w);
+		default:
+		{
+			printf("default ág");
+			break;
+		}
+	}
 
 	char kar = 'a';
 
-	printf("%x", kar);
+	printf("\n%x", kar);
 
-	char op = '-';
-
-	switch (op)
-	{
-		case '*':
-		{
-			printf("A szorzat: %f", r*w);
-			break;
-		}
-
-		case '+':
-		{
-			printf("Az osszeg: %f", r + w);
-			break;
-		}
-		default:
-		{
-			printf("Nem ertelmezett muvelet");
-			break;
-		}
-	}
-
-	
 
 
 	/* Replace with your application code */
@@ -125,9 +112,3 @@ int main(void)
 
 	}
 }
-
-
-
-
-
-
