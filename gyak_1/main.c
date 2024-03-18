@@ -6,6 +6,7 @@
 * Include files
 ******************************************************************************/
 #include <stdio.h>
+#include <string.h>
 
 /******************************************************************************
 * Macros
@@ -48,6 +49,8 @@
 ******************************************************************************/
 float atlag(int tomb[], int meret);
 void negyzet_es_kob(int szam, int* negyzet, int* kob);
+void buborekRendezes(int tomb[], int meret);
+void szovegMegforditasa(char szoveg[]);
 
 /******************************************************************************
 * Local Function Definitions
@@ -102,13 +105,31 @@ int main(void)
 	printf("%f", eredmeny);
 	*/
 	//6. feladat
+	/*
 	printf("Adjon meg egy szamot: ");
 	int szam = 0;
 	scanf_s("%d", &szam);
 	int negyzet = 0, kob = 0;
 	negyzet_es_kob(szam, &negyzet, &kob);
 	printf("\n%d szam negyzete: %d, kobe: %d", szam, negyzet, kob);
-	
+	*/
+	//7. feladat
+	/*
+	int tomb[TOMB_MERETE];
+	for (int i = 0; i < TOMB_MERETE; i++)
+	{
+		scanf_s("%d", &tomb[i]);
+	}
+	for (int i = 0; i < TOMB_MERETE; i++) printf("%d", tomb[i]);
+	buborekRendezes(tomb, TOMB_MERETE);
+	printf("\n");
+	for (int i = 0; i < TOMB_MERETE; i++) printf("%d", tomb[i]);
+	*/
+
+	//8. feladat
+	char szoveg[] = {"0123456789\0"};
+	szovegMegforditasa(szoveg);
+	printf("%s", szoveg);
 
 	/* Replace with your application code */
 	while (1)
@@ -145,4 +166,51 @@ void negyzet_es_kob(int szam, int* negyzet, int* kob)
 {
 	*negyzet = szam * szam;
 	*kob = (*negyzet) * szam;
+}
+
+/******************************************************************************
+* Function:         void buborekRendezes(int tomb[], int meret)
+* Description:      Buborékos rendezés
+* Input:			A tömb, a tömb mérete
+* Output:
+* Notes:
+******************************************************************************/
+void buborekRendezes(int tomb[], int meret)
+{
+	int volt_csere = 0;
+	for (int i = 0; i < meret-1; i++)
+	{
+		volt_csere = 0;
+		for (int j = 0; j < meret-1-i; j++)
+		{
+			if (tomb[j] > tomb[j + 1])
+			{
+				int temp = tomb[j];
+				tomb[j] = tomb[j + 1];
+				tomb[j + 1] = temp;
+				volt_csere++;
+			}
+		}
+		if (volt_csere == 0) return;
+	}
+}
+
+/******************************************************************************
+* Function:         void szovegMegforditasa(char szoveg[])
+* Description:      Karaktersorozat megfordítása
+* Input:			A karaktersorozatot tartalmazó tömb
+* Output:
+* Notes:
+******************************************************************************/
+void szovegMegforditasa(char szoveg[])
+{
+	int hossz = strlen(szoveg);
+	for (int i = 0; i < hossz / 2; i++)
+	{
+		char temp = szoveg[i];
+		szoveg[i] = szoveg[hossz - 1 - i];
+		szoveg[hossz - 1 - i] = temp;
+	}
+	//printf("%d", hossz);
+
 }
