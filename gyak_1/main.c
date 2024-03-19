@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 /******************************************************************************
 * Macros
@@ -51,6 +52,7 @@ int a=0, b;
 float atlag(int tomb[], int meret);
 void NegyzetEsKob(int szam, int* negyzet, int* kob);
 void buborekRendezes(int tomb[], int meret);
+void szovegMegforditasa(char szoveg[]);
 
 /******************************************************************************
 * Local Function Definitions
@@ -117,6 +119,7 @@ int main(void)
 	printf("A %d negyzete: %d, kobe: %d", szam, negyzet, kob);*/
 	
 	//7. feladat
+	/*
 	srand(time(NULL));
 	int tomb[100];
 	for (int i = 0; i < 100; i++)
@@ -125,9 +128,15 @@ int main(void)
 		//scanf_s("%d", &tomb[i]);
 	}
 	buborekRendezes(tomb, 100);
-	printf("A rendezett tomb: ");
+	printf("A rendezett tomb:  ");
 	for (int i = 0; i < 100; i++) printf("%d ", tomb[i]);
+	*/
 
+	//8. feladat
+	char szoveg[] = "radar";
+	printf("%s\n", szoveg);
+	szovegMegforditasa(szoveg);
+	printf("%s\n", szoveg);
 	/* Replace with your application code */
 	while (1)
 	{
@@ -180,16 +189,40 @@ void buborekRendezes(int tomb[], int meret)
 {
 	for (int i = 0; i < meret-1; i++)
 	{
-		for (int j = 0; j < meret-1; j++)
+		int csere_cnt = 0;
+		for (int j = 0; j < meret-1-i; j++)
 		{
 			if (tomb[j] > tomb[j + 1])
 			{
+				csere_cnt++;
 				int temp = tomb[j];
 				tomb[j] = tomb[j + 1];
 				tomb[j + 1] = temp;
 			}
 		}
+		if (csere_cnt == 0) return;
 	}
+}
+
+/******************************************************************************
+* Function:         void szovegMegforditasa(char szoveg[])
+* Description:      Megfordít egy szöveget
+* Input:			tömb memóriacíme, ami a szöveget tartalmazza
+* Output:
+* Notes:
+******************************************************************************/
+void szovegMegforditasa(char szoveg[])
+{
+	int hossz = strlen(szoveg);
+	//printf("%d", hossz);
+	for (int i = 0; i < hossz / 2; i++)
+	{
+		char temp = szoveg[i];
+		szoveg[i] = szoveg[hossz - 1 - i];
+		szoveg[hossz - 1 - i] = temp;
+	}
+
+
 }
 
 
