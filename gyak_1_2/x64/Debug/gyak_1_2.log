@@ -1,2 +1,11 @@
-﻿  main.c
-  gyak_1_2.vcxproj -> C:\Users\FeherArpad\Documents\FeherArpad\jfr_gyak\x64\Debug\gyak_1_2.exe
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (gyak_1_2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.c
+C:\Users\FeherArpad\Desktop\Jarmfed_I_gyak_C_VS\gyak_1_2\main.c(83,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type '__int64'
+  C:\Users\FeherArpad\Desktop\Jarmfed_I_gyak_C_VS\gyak_1_2\main.c(83,9):
+  consider using '%lld' in the format string
+  C:\Users\FeherArpad\Desktop\Jarmfed_I_gyak_C_VS\gyak_1_2\main.c(83,9):
+  consider using '%Id' in the format string
+  C:\Users\FeherArpad\Desktop\Jarmfed_I_gyak_C_VS\gyak_1_2\main.c(83,9):
+  consider using '%I64d' in the format string
+  
+  gyak_1_2.vcxproj -> C:\Users\FeherArpad\Desktop\Jarmfed_I_gyak_C_VS\x64\Debug\gyak1_3.exe
