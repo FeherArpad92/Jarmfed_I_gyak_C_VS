@@ -1,0 +1,4 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (jfr_gyak.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.c
+C:\Users\FeherArpad\Desktop\Jarmfed_I_gyak_C_VS\bevezeto_gyak\main.c(88,8): warning C4305: 'initializing': truncation from 'double' to 'float'
+  jfr_gyak.vcxproj -> C:\Users\FeherArpad\Desktop\Jarmfed_I_gyak_C_VS\x64\Debug\bevezeto_gyak.exe
