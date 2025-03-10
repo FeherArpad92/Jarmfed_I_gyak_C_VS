@@ -1,0 +1,6 @@
+﻿  main.c
+Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\2_fuggvenyek\main.c(69,52): warning C4477: 'scanf_s' : format string '%d' requires an argument of type 'int *', but variadic argument 1 has type 'uint16_t *'
+      Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\2_fuggvenyek\main.c(69,52):
+      consider using '%hd' in the format string
+  
+  2_fuggvenyek.vcxproj -> Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\ARM64\Debug\2_fuggvenyek.exe
