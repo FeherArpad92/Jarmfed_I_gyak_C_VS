@@ -1,0 +1,4 @@
+﻿  main.c
+Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\2_fuggvenyek\main.c(53,11): warning C4101: 'tomb': unreferenced local variable
+Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\2_fuggvenyek\main.c(139,19): warning C4267: 'initializing': conversion from 'size_t' to 'uint16_t', possible loss of data
+  2_fuggvenyek.vcxproj -> Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\x64\Debug\2_fuggvenyek.exe

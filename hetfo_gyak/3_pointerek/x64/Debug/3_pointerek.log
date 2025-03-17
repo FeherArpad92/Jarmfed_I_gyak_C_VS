@@ -1,0 +1,6 @@
+﻿  main.c
+Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\3_pointerek\main.c(75,10): warning C4477: 'scanf_s' : format string '%d' requires an argument of type 'int *', but variadic argument 1 has type 'uint8_t *'
+      Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\3_pointerek\main.c(75,10):
+      consider using '%hhd' in the format string
+  
+  3_pointerek.vcxproj -> Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\x64\Debug\3_pointerek.exe

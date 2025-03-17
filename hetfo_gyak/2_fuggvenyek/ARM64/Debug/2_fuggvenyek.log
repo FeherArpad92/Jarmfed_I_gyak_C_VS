@@ -3,4 +3,6 @@ Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\2_fuggvenyek\main.c(69,52): warning C4477: 'sc
       Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\2_fuggvenyek\main.c(69,52):
       consider using '%hd' in the format string
   
+Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\2_fuggvenyek\main.c(133,19): warning C4013: 'strlen' undefined; assuming extern returning int
+  LINK : Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\ARM64\Debug\2_fuggvenyek.exe not found or not built by the last incremental link; performing full link
   2_fuggvenyek.vcxproj -> Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\ARM64\Debug\2_fuggvenyek.exe

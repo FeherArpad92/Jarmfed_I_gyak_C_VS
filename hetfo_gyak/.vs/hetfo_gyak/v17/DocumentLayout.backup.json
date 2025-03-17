@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{03812E23-5C4F-4E24-9A7F-047F064E17F4}|2_fuggvenyek\\2_fuggvenyek.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\2_fuggvenyek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{03812E23-5C4F-4E24-9A7F-047F064E17F4}|2_fuggvenyek\\2_fuggvenyek.vcxproj|solutionrelative:2_fuggvenyek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{1626182D-E076-47C4-8B1C-23D04EFE449C}|3_pointerek\\3_pointerek.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\3_pointerek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1626182D-E076-47C4-8B1C-23D04EFE449C}|3_pointerek\\3_pointerek.vcxproj|solutionrelative:3_pointerek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,13 +20,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.c",
-              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\2_fuggvenyek\\main.c",
-              "RelativeDocumentMoniker": "2_fuggvenyek\\main.c",
-              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\2_fuggvenyek\\main.c",
-              "RelativeToolTip": "2_fuggvenyek\\main.c",
-              "ViewState": "AgIAAB4AAAAAfGdmZmb0vyIAAABFAAAAAAAAAA==",
+              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\3_pointerek\\main.c",
+              "RelativeDocumentMoniker": "3_pointerek\\main.c",
+              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\3_pointerek\\main.c",
+              "RelativeToolTip": "3_pointerek\\main.c",
+              "ViewState": "AgIAAEYAAAAA8DIzMzPrv08AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-03-10T15:31:27.163Z",
+              "WhenOpened": "2025-03-17T16:17:16.933Z",
               "EditorCaption": ""
             }
           ]
