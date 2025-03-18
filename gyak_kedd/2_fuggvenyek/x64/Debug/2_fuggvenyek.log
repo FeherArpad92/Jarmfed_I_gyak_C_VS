@@ -1,0 +1,3 @@
+﻿  main.c
+Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\2_fuggvenyek\main.c(141,19): warning C4267: 'initializing': conversion from 'size_t' to 'uint16_t', possible loss of data
+  2_fuggvenyek.vcxproj -> Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\x64\Debug\2_fuggvenyek.exe

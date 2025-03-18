@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D11A0406-31A5-47EF-B963-1A4A512CD6F0}|2_fuggvenyek\\2_fuggvenyek.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\2_fuggvenyek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D11A0406-31A5-47EF-B963-1A4A512CD6F0}|2_fuggvenyek\\2_fuggvenyek.vcxproj|solutionrelative:2_fuggvenyek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{AF172768-F866-40D1-BF0F-B490AFE2CD0A}|3_pointerek\\3_pointerek.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\3_pointerek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AF172768-F866-40D1-BF0F-B490AFE2CD0A}|3_pointerek\\3_pointerek.vcxproj|solutionrelative:3_pointerek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,13 +20,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.c",
-              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\2_fuggvenyek\\main.c",
-              "RelativeDocumentMoniker": "2_fuggvenyek\\main.c",
-              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\2_fuggvenyek\\main.c",
-              "RelativeToolTip": "2_fuggvenyek\\main.c",
-              "ViewState": "AgIAAH8AAAAAwGZmZmb0v4kAAAABAAAAAAAAAA==",
+              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\3_pointerek\\main.c",
+              "RelativeDocumentMoniker": "3_pointerek\\main.c",
+              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\3_pointerek\\main.c",
+              "RelativeToolTip": "3_pointerek\\main.c",
+              "ViewState": "AgIAAEQAAAAAiQAAAADyv04AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-03-11T09:24:50.717Z",
+              "WhenOpened": "2025-03-18T09:51:53.335Z",
               "EditorCaption": ""
             }
           ]

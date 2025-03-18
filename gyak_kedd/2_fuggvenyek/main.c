@@ -35,6 +35,7 @@
 float szamokAtlaga(uint16_t tomb[], uint8_t meret);
 void szamNegyzetKob(uint16_t szam, uint16_t* n, uint16_t* k);
 void buborekosRendezes(uint16_t tomb[], uint16_t meret);
+void szovegMegforditasa(char szoveg[]);
 
 /******************************************************************************
 * Local Function Definitions
@@ -63,11 +64,16 @@ int main(void)
 	printf("A szam negyzete: %d, kobe: %d", negyzet, kob);*/
 
 	//3. feladat
-	uint16_t t[TOMB_M];
-	for (uint8_t i = 0; i < TOMB_M; i++) scanf_s("%d", &t[i]);
-	buborekosRendezes(t, TOMB_M);
-	for (uint8_t i = 0; i < TOMB_M; i++) printf("%d ", t[i]);
-	/* Replace with your application code */
+	//uint16_t t[TOMB_M];
+	//for (uint8_t i = 0; i < TOMB_M; i++) scanf_s("%d", &t[i]);
+	//buborekosRendezes(t, TOMB_M);
+	//for (uint8_t i = 0; i < TOMB_M; i++) printf("%d ", t[i]);
+	///* Replace with your application code */
+	//4. feladat
+	char t[] = "minta szoveg";
+	szovegMegforditasa(t);
+	printf("%s", &t);
+
 	while (1)
 	{
 
@@ -133,7 +139,12 @@ void buborekosRendezes(uint16_t tomb[], uint16_t meret)
 void szovegMegforditasa(char szoveg[])
 {
 	uint16_t hossz = strlen(szoveg);
-
+	for (uint8_t i = 0; i < hossz/2; i++)
+	{
+		char temp = szoveg[i];
+		szoveg[i] = szoveg[hossz - i - 1];
+		szoveg[hossz - i - 1] = temp;
+	}
 
 }
 
