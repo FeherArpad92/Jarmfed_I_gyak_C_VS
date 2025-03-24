@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2_fuggvenyek", "2_fuggvenye
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3_pointerek", "3_pointerek\3_pointerek.vcxproj", "{1626182D-E076-47C4-8B1C-23D04EFE449C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4_c_konyvtarak", "4_c_konyvtarak\4_c_konyvtarak.vcxproj", "{564DDD2D-E9E8-4953-890D-15DE6A784F30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -69,6 +71,18 @@ Global
 		{1626182D-E076-47C4-8B1C-23D04EFE449C}.Release|x64.Build.0 = Release|x64
 		{1626182D-E076-47C4-8B1C-23D04EFE449C}.Release|x86.ActiveCfg = Release|Win32
 		{1626182D-E076-47C4-8B1C-23D04EFE449C}.Release|x86.Build.0 = Release|Win32
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Debug|ARM64.Build.0 = Debug|ARM64
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Debug|x64.ActiveCfg = Debug|x64
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Debug|x64.Build.0 = Debug|x64
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Debug|x86.ActiveCfg = Debug|Win32
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Debug|x86.Build.0 = Debug|Win32
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Release|ARM64.ActiveCfg = Release|ARM64
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Release|ARM64.Build.0 = Release|ARM64
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Release|x64.ActiveCfg = Release|x64
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Release|x64.Build.0 = Release|x64
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Release|x86.ActiveCfg = Release|Win32
+		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

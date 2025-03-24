@@ -71,16 +71,42 @@ int main(void)
 	//printf("%d", (**ptr_to_ptr));
 
 	//3. feladat
-	uint8_t meret;
-	scanf_s("%d", &meret);
+	//uint8_t meret;
+	//scanf_s("%d", &meret);
 
-	//uint16_t tomb[meret];
-	uint16_t* tomb;
+	////uint16_t tomb[234];
+	//uint16_t* tomb;
 
-	tomb = (uint16_t*) malloc(meret * sizeof(uint16_t));
+	//tomb = (uint16_t*) malloc(meret * sizeof(uint16_t));
 
-	*tomb = 1;
-	*(tomb + 1) = 2;
+	//*(tomb + 0) = 1;
+
+	//*(tomb + 1) = 2;
+	//for (uint8_t i = 0; i < meret; i++)
+	//{
+	//	//*(tomb + i) = i;
+	//	tomb[i] = i;
+	//}
+	//for (uint8_t i = 0; i < meret; i++) printf("%d", tomb[i]);
+
+	//free(tomb);
+	
+	//4. feladat
+
+	const char szoveg[] = "Ez egy konstans karakterlanc";
+	uint8_t hossz=0;
+	//printf("%d", strlen(szoveg));
+	/*for (uint8_t i = 0; i < strlen(szoveg); i++)
+	{
+		hossz++;
+	}
+	printf("%d", hossz);*/
+	const char* p = szoveg;
+	while (*p)
+		p++;
+	printf("A szoveg hossza: %lld", (int)(p - szoveg));
+
+
 
 
 
