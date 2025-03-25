@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <inttypes.h>
 #include <stdlib.h>
+#include <string.h>
 
 /******************************************************************************
 * Macros
@@ -67,17 +68,36 @@ int main(void)
 	(**ptr_to_ptr) = 30;
 	printf("%d", number);*/
 	//3. feladat
-	printf("Adjon meg egy meretet: ");
-	uint64_t meret = 0;
-	scanf_s("%lld", &meret);
+	//printf("Adjon meg egy meretet: ");
+	//uint64_t meret = 0;
+	//scanf_s("%lld", &meret);
 
-	uint16_t* tomb = (uint16_t*)malloc(sizeof(uint16_t) * meret);
-	if (tomb == NULL)
-	{
-		printf("Sikertelen memoriafoglalas");
-		return 1;
-	}
+	//uint16_t* tomb = (uint16_t*) malloc(sizeof(uint16_t) * meret);
+	//if (tomb == NULL)
+	//{
+	//	printf("Sikertelen memoriafoglalas");
+	//	return 1;
+	//}
+	//printf("Adjon meg szamokat: ");
+	//for (uint64_t i = 0; i < meret; i++)
+	//{
+	//	//scanf_s("%d", tomb + i);
+	//	scanf_s("%d", &tomb[i]);
+	//}
+	//for (uint64_t i = 0; i < meret; i++) printf("%d ", *(tomb + i));
+	//printf("masik modszer a kiiratasra: ");
+	//for (uint64_t i = 0; i < meret; i++) printf("%d ", tomb[i]);
+	//free(tomb);
+	//4. feladat
 
+	const char szoveg[] = "Ez egy konstans karakterlanc";
+	printf("A karakterlanc hossza (strlen): %d\n", strlen(szoveg));
+	printf("A karakterlanc hossza (sizeof): %d\n", sizeof(szoveg));
+
+	const char* p = szoveg;
+	while(*p) p++;
+
+	printf("A karakterlanc hossza (pointerekkel): %d", (p-szoveg));
 
 	/* Replace with your application code */
 	while (1)

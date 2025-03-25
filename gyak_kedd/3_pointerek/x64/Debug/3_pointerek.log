@@ -1,1 +1,18 @@
-﻿  3_pointerek.vcxproj -> Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\x64\Debug\3_pointerek.exe
+﻿  main.c
+Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\3_pointerek\main.c(94,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+      Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\3_pointerek\main.c(94,9):
+      consider using '%zd' in the format string
+  
+Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\3_pointerek\main.c(95,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+      Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\3_pointerek\main.c(95,9):
+      consider using '%zd' in the format string
+  
+Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\3_pointerek\main.c(100,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type '__int64'
+      Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\3_pointerek\main.c(100,9):
+      consider using '%lld' in the format string
+      Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\3_pointerek\main.c(100,9):
+      consider using '%Id' in the format string
+      Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\3_pointerek\main.c(100,9):
+      consider using '%I64d' in the format string
+  
+  3_pointerek.vcxproj -> Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\x64\Debug\3_pointerek.exe

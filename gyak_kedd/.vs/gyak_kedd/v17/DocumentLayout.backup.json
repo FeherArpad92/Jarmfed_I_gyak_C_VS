@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AF172768-F866-40D1-BF0F-B490AFE2CD0A}|3_pointerek\\3_pointerek.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\3_pointerek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{AF172768-F866-40D1-BF0F-B490AFE2CD0A}|3_pointerek\\3_pointerek.vcxproj|solutionrelative:3_pointerek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{E60C29D7-C54D-48A5-A157-4CDCA5214222}|4_c_szabvanyos_konvtarak\\4_c_szabvanyos_konvtarak.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\4_c_szabvanyos_konvtarak\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E60C29D7-C54D-48A5-A157-4CDCA5214222}|4_c_szabvanyos_konvtarak\\4_c_szabvanyos_konvtarak.vcxproj|solutionrelative:4_c_szabvanyos_konvtarak\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,13 +20,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.c",
-              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\3_pointerek\\main.c",
-              "RelativeDocumentMoniker": "3_pointerek\\main.c",
-              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\3_pointerek\\main.c",
-              "RelativeToolTip": "3_pointerek\\main.c",
-              "ViewState": "AgIAAD8AAADgDwAAAIAnwEcAAAAZAAAAAAAAAA==",
+              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\4_c_szabvanyos_konvtarak\\main.c",
+              "RelativeDocumentMoniker": "4_c_szabvanyos_konvtarak\\main.c",
+              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\4_c_szabvanyos_konvtarak\\main.c",
+              "RelativeToolTip": "4_c_szabvanyos_konvtarak\\main.c",
+              "ViewState": "AgIAAF4AAABAoJmZmRkmwGkAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-03-18T09:51:53.335Z",
+              "WhenOpened": "2025-03-25T09:51:41.374Z",
               "EditorCaption": ""
             }
           ]
