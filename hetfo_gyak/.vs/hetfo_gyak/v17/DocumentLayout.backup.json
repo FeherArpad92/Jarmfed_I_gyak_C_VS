@@ -3,15 +3,8 @@
   "WorkspaceRootPath": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{564DDD2D-E9E8-4953-890D-15DE6A784F30}|4_c_konyvtarak\\4_c_konyvtarak.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\4_c_konyvtarak\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{564DDD2D-E9E8-4953-890D-15DE6A784F30}|4_c_konyvtarak\\4_c_konyvtarak.vcxproj|solutionrelative:4_c_konyvtarak\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{564DDD2D-E9E8-4953-890D-15DE6A784F30}|4_c_konyvtarak\\4_c_konyvtarak.vcxproj|C:\\PROGRAM FILES (X86)\\WINDOWS KITS\\10\\INCLUDE\\10.0.22621.0\\UCRT\\CORECRT_MATH_DEFINES.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1626182D-E076-47C4-8B1C-23D04EFE449C}|3_pointerek\\3_pointerek.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\3_pointerek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{1626182D-E076-47C4-8B1C-23D04EFE449C}|3_pointerek\\3_pointerek.vcxproj|solutionrelative:3_pointerek\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}|5_lancolt_lista\\5_lancolt_lista.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\5_lancolt_lista\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}|5_lancolt_lista\\5_lancolt_lista.vcxproj|solutionrelative:5_lancolt_lista\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,43 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "corecrt_math_defines.h",
-              "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt_math_defines.h",
-              "ToolTip": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt_math_defines.h",
-              "ViewState": "AgIAABEAAABAOzMzMzMrwBwAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-24T16:36:27.343Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.c",
-              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\4_c_konyvtarak\\main.c",
-              "RelativeDocumentMoniker": "4_c_konyvtarak\\main.c",
-              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\4_c_konyvtarak\\main.c*",
-              "RelativeToolTip": "4_c_konyvtarak\\main.c*",
-              "ViewState": "AgIAAFsAAADgZ2ZmZiYwwGoAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\5_lancolt_lista\\main.c",
+              "RelativeDocumentMoniker": "5_lancolt_lista\\main.c",
+              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\5_lancolt_lista\\main.c",
+              "RelativeToolTip": "5_lancolt_lista\\main.c",
+              "ViewState": "AgIAAD0AAADAfTMzMzMfwEgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-03-24T15:44:07.693Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "main.c",
-              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\3_pointerek\\main.c",
-              "RelativeDocumentMoniker": "3_pointerek\\main.c",
-              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\hetfo_gyak\\3_pointerek\\main.c",
-              "RelativeToolTip": "3_pointerek\\main.c",
-              "ViewState": "AgIAAGIAAAAA4MzMzMwFwGkAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-03-17T16:17:16.933Z",
+              "WhenOpened": "2025-03-31T10:56:56.092Z",
               "EditorCaption": ""
             }
           ]

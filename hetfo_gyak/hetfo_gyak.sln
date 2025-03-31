@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3_pointerek", "3_pointerek\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4_c_konyvtarak", "4_c_konyvtarak\4_c_konyvtarak.vcxproj", "{564DDD2D-E9E8-4953-890D-15DE6A784F30}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5_lancolt_lista", "5_lancolt_lista\5_lancolt_lista.vcxproj", "{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -83,6 +85,18 @@ Global
 		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Release|x64.Build.0 = Release|x64
 		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Release|x86.ActiveCfg = Release|Win32
 		{564DDD2D-E9E8-4953-890D-15DE6A784F30}.Release|x86.Build.0 = Release|Win32
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Debug|ARM64.Build.0 = Debug|ARM64
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Debug|x64.ActiveCfg = Debug|x64
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Debug|x64.Build.0 = Debug|x64
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Debug|x86.ActiveCfg = Debug|Win32
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Debug|x86.Build.0 = Debug|Win32
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Release|ARM64.ActiveCfg = Release|ARM64
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Release|ARM64.Build.0 = Release|ARM64
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Release|x64.ActiveCfg = Release|x64
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Release|x64.Build.0 = Release|x64
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Release|x86.ActiveCfg = Release|Win32
+		{7AB51050-56A4-4B67-8BD4-45AC8EEDD493}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
