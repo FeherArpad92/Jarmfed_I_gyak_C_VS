@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8304B97C-9C2C-4D66-A155-94FE27E22C67}|5_lancolt_lista\\5_lancolt_lista.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\5_lancolt_lista\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8304B97C-9C2C-4D66-A155-94FE27E22C67}|5_lancolt_lista\\5_lancolt_lista.vcxproj|solutionrelative:5_lancolt_lista\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.c",
+              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\5_lancolt_lista\\main.c",
+              "RelativeDocumentMoniker": "5_lancolt_lista\\main.c",
+              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\gyak_kedd\\5_lancolt_lista\\main.c",
+              "RelativeToolTip": "5_lancolt_lista\\main.c",
+              "ViewState": "AgIAAFQAAAAACQAAAAAawEkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-04-01T08:24:00.114Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

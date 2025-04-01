@@ -1,0 +1,3 @@
+﻿  main.c
+Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\5_lancolt_lista\main.c(71,17): warning C4013: 'insertnode' undefined; assuming extern returning int
+  5_lancolt_lista.vcxproj -> Y:\Jarmfed_I_gyak_C_VS\gyak_kedd\x64\Debug\5_lancolt_lista.exe
