@@ -1,0 +1,14 @@
+title: Járműfedélzeti Rendszerek I.
+description: Gyakorlati segédanyagok
+remote_theme: pmarsceill/just-the-docs
+
+# Ez a rész felel a navigáció sorrendjéért és a keresésért
+search_enabled: true
+heading_anchors: true
+# logo: /logos/BME-KJK_LOGO_2025_horizontal_black_hun.png
+
+keep_files:
+  - 1_makrok
+
+color_scheme: bme
+

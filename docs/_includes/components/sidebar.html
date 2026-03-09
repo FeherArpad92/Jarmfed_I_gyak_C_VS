@@ -1,0 +1,30 @@
+{%- comment -%}
+  Overridden sidebar.html to add custom logo.
+  Original source: https://github.com/just-the-docs/just-the-docs/blob/main/_includes/components/sidebar.html
+{%- endcomment -%}
+
+<header class="side-bar">
+  <div class="site-header">
+    <a href="{{ '/' | relative_url }}" class="site-title lh-tight">{% include title.html %}</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  {% include_cached components/site_nav.html %}
+
+  <div class="custom-sidebar-logo" style="margin-top: 1.5rem; text-align: center; padding: 0 1rem;">
+    <img src="{{ '/logos/BME-KJK_LOGO_2025_horizontal_black_hun.png' | relative_url }}" alt="Logo" style="max-width: 100%; height: auto;">
+  </div>
+
+  <div class="d-md-block d-none site-footer">
+  {% capture nav_footer_custom %}
+    {%- include nav_footer_custom.html -%}
+  {% endcapture %}
+  {% if nav_footer_custom != "" %}
+    {{ nav_footer_custom }}
+  {% else %}
+    This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+  {% endif %}
+  </div>
+</header>

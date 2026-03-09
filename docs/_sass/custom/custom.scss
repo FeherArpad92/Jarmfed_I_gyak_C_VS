@@ -1,0 +1,22 @@
+// Ide írhatod a saját CSS szabályaidat
+
+.side-bar {
+  background-color: rgba(138, 36, 50, 0.05); // BME vörös nagyon halvány változata
+  border-right: 1px solid rgba(138, 36, 50, 0.1); // Kicsit erősebb keret
+
+  // Force sidebar width on desktop (assuming desktop breakpoint is 50em/800px)
+  @media (min-width: 50em) {
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+    flex: 0 0 300px !important;
+  }
+}
+
+
+// Override main content width directly to ensure it takes effect if variable fails
+.main-content {
+  max-width: 90rem;
+}
+
+
