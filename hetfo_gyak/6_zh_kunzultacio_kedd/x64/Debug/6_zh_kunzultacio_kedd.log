@@ -1,0 +1,3 @@
+﻿  main.c
+Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\6_zh_kunzultacio_kedd\main.c(68,9): warning C4566: character represented by universal-character-name '\u0171' cannot be represented in the current code page (1252)
+  6_zh_kunzultacio_kedd.vcxproj -> Y:\Jarmfed_I_gyak_C_VS\hetfo_gyak\x64\Debug\6_zh_kunzultacio_kedd.exe
