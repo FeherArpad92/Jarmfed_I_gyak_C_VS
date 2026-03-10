@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "Y:\\Jarmfed_I_gyak_C_VS\\hetfoi_gyak\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{044FC293-CA24-40E9-A0F0-BEF29B90E060}|gyak_1\\gyak_1.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\hetfoi_gyak\\gyak_1\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{044FC293-CA24-40E9-A0F0-BEF29B90E060}|gyak_1\\gyak_1.vcxproj|solutionrelative:gyak_1\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.c",
+              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\hetfoi_gyak\\gyak_1\\main.c",
+              "RelativeDocumentMoniker": "gyak_1\\main.c",
+              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\hetfoi_gyak\\gyak_1\\main.c",
+              "RelativeToolTip": "gyak_1\\main.c",
+              "ViewState": "AgIAAAAAAAAANDMzMzMrwAwAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-03-09T16:32:33.237Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
