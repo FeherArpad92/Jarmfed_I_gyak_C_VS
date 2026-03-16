@@ -8,6 +8,7 @@ nav_order: 2
 {: .no_toc }
 
 A mai gyakorlat célja a C előfeldolgozó (preprocessor) működésének megértése. Bár a modern C++ fejlesztésben a makrókat gyakran felváltják a `template` és `inline` megoldások, beágyazott környezetben (mint a járműfedélzeti rendszerek) és C-ben továbbra is kikerülhetetlenek. A feladatok megoldása során törekedjünk a "biztonságos" makrók írására, ügyelve a mellékhatásokra. <!--A teljes megoldás letölthető innen: [main.c]({{ site.github.repository_url }}/blob/main/1_makrok/main.c)-->
+
 ![Compilation process](figures/Compilation-Process-in-C.png)
 
 ## Elméleti háttér: Szöveg vs. Függvény
