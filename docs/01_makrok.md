@@ -7,7 +7,8 @@ nav_order: 2
 # 1. Gyakorlat: Preprocessor és Makrók
 {: .no_toc }
 
-A mai gyakorlat célja a C előfeldolgozó (preprocessor) működésének megértése. Bár a modern C++ fejlesztésben a makrókat gyakran felváltják a `template` és `inline` megoldások, beágyazott környezetben (mint a járműfedélzeti rendszerek) és C-ben továbbra is kikerülhetetlenek. A feladatok megoldása során törekedjünk a "biztonságos" makrók írására, ügyelve a mellékhatásokra. A teljes megoldás letölthető innen: [main.c]({{ site.github.repository_url }}/blob/main/1_makrok/main.c)
+A mai gyakorlat célja a C előfeldolgozó (preprocessor) működésének megértése. Bár a modern C++ fejlesztésben a makrókat gyakran felváltják a `template` és `inline` megoldások, beágyazott környezetben (mint a járműfedélzeti rendszerek) és C-ben továbbra is kikerülhetetlenek. A feladatok megoldása során törekedjünk a "biztonságos" makrók írására, ügyelve a mellékhatásokra. <!--A teljes megoldás letölthető innen: [main.c]({{ site.github.repository_url }}/blob/main/1_makrok/main.c)-->
+![Compilation process](figures/Compilation-Process-in-C.png)
 
 ## Elméleti háttér: Szöveg vs. Függvény
 Mielőtt a feladatokat megnéznénk, fontos tisztázni a C preprocessor működését. A makróhívás **nem függvényhívás**. A fordító előfeldolgozója a fordítás legelső fázisában egyszerű szöveges behelyettesítést végez (copy-paste), még mielőtt a szintaktikai elemzés vagy a típusellenőrzés megtörténne.
