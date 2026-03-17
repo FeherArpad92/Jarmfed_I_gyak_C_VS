@@ -1,0 +1,2 @@
+﻿  main.c
+LINK : fatal error LNK1181: cannot open input file 'ARM64\Release\main.obj'

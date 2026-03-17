@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Created:
  * Author :
 ******************************************************************************/
@@ -11,6 +11,20 @@
 * Macros
 ******************************************************************************/
 #define MAXIMUM(a,b) ((a>b) ? a : b)
+
+#define BEOLVAS(valtozo) \
+	printf("Adja meg a szemely korat! ");\
+	scanf_s("%d", &valtozo)
+
+#define HIBA(msg) printf("Hiba a %d. sorban: %s, file: %s",__LINE__, msg, __FILE__)
+
+#define CHECK_ERROR(feltetel, uzenet)\
+	do{\
+		if(feltetel) {\
+			printf("Vegzetes hiba: %s", uzenet);\
+			exit(1);\
+		}\
+	} while(0)
 
 /******************************************************************************
 * Constants
@@ -45,12 +59,42 @@
 ******************************************************************************/
 int main(void)
 {
-	int x = 20;
-	int y = 24;
+	//1. feladat
+	//int x = 20;
+	//int y = 24;
 
-	int m = MAXIMUM(x, y);
+	//int m = MAXIMUM(x, y);
 
-	printf("A nagyobb szam: %d", m);
+	//printf("A nagyobb szam: %d", m);
+
+	//2. feladat
+	//unsigned int szemely_kora = 0;
+
+	//BEOLVAS(szemely_kora);
+
+	//printf("A beolvasás kész. A kod a %d. sorban jár.\n", __LINE__);
+	//printf("A beolvasott kor: %d", szemely_kora);
+
+	//3. feladat
+	/*int homerseklet = 150;
+
+	printf("A hőmérséklet ellenőrzése\n");
+
+	if (homerseklet > 100)
+	{
+		HIBA("Tul magas homerseklet!");
+	}
+	else
+	{
+		printf("Homerseklet rendben");
+	}*/
+
+	//4. feladat
+	int osztando = 100;
+	int oszto = 0;
+
+	CHECK_ERROR(oszto == 0, "Nullaval valo osztas nem megengedett!");
+
 	/* Replace with your application code */
 	while (1)
 	{
@@ -62,8 +106,3 @@ int main(void)
 /******************************************************************************
 * Interrupt Routines
 ******************************************************************************/
-
-
-
-
-
