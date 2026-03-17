@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "Y:\\Jarmfed_I_gyak_C_VS\\FDR1_gyak_kedd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D650534D-9713-487F-9854-599B2F5F5CE2}|gyak1\\gyak1.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\FDR1_gyak_kedd\\gyak1\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D650534D-9713-487F-9854-599B2F5F5CE2}|gyak1\\gyak1.vcxproj|solutionrelative:gyak1\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1323DFD-0C7A-4F8F-8719-2E4A52ABD624}|gyak2\\gyak2.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\FDR1_gyak_kedd\\gyak2\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1323DFD-0C7A-4F8F-8719-2E4A52ABD624}|gyak2\\gyak2.vcxproj|solutionrelative:gyak2\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.c",
+              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\FDR1_gyak_kedd\\gyak1\\main.c",
+              "RelativeDocumentMoniker": "gyak1\\main.c",
+              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\FDR1_gyak_kedd\\gyak1\\main.c",
+              "RelativeToolTip": "gyak1\\main.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-03-17T10:48:02.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.c",
+              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\FDR1_gyak_kedd\\gyak2\\main.c",
+              "RelativeDocumentMoniker": "gyak2\\main.c",
+              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\FDR1_gyak_kedd\\gyak2\\main.c",
+              "RelativeToolTip": "gyak2\\main.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-03-17T10:09:08.375Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
