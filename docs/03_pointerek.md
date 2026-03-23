@@ -45,11 +45,11 @@ Alapvető operátorok:
       int32_t *ptr = &szam;
       
       // A szám értékének kiírása közvetlenül
-      printf("A szam erteke: %" PRId32 "\n", szam);
+      printf("A szam erteke: %d\n", szam);
       
       // A pointer által mutatott érték kiírása a '*' (dereferáló) operátorral.
       // A '*ptr' azt jelenti: "olvasd ki az értéket arról a memóriacímről, amire ptr mutat."
-      printf("A pointer altal mutatott ertek: %" PRId32 "\n", *ptr);
+      printf("A pointer altal mutatott ertek: %d\n", *ptr);
       
       // A pointer értékének (azaz a memóriacímnek) a kiírása.
       // A %p formátum a memóriacímek kiírására szolgál.
@@ -85,8 +85,8 @@ Ez a koncepció különösen fontos a dinamikus memóriakezelésnél és a függ
       int32_t *ptr = &szam; // ptr a 'szam' memóriacímére mutat
       
       printf("--- Kezdeti allapot ---\n");
-      printf("szam erteke: %" PRId32 "\n", szam);
-      printf("*ptr erteke (pointeren keresztul): %" PRId32 "\n", *ptr);
+      printf("szam erteke: %d\n", szam);
+      printf("*ptr erteke (pointeren keresztul): %d\n", *ptr);
       
       // 2. lépés: Érték módosítása a pointeren keresztül.
       // A '*ptr = 20' azt jelenti: "írd a 20-as értéket arra a memóriacímre, amire ptr mutat."
@@ -94,8 +94,8 @@ Ez a koncepció különösen fontos a dinamikus memóriakezelésnél és a függ
       *ptr = 20;
       
       printf("\n--- Modositas pointeren keresztul (*ptr = 20) ---\n");
-      printf("szam erteke: %" PRId32 "\n", szam);
-      printf("*ptr erteke: %" PRId32 "\n", *ptr);
+      printf("szam erteke: %d\n", szam);
+      printf("*ptr erteke: %d\n", *ptr);
       
       // 3. lépés: Dupla pointer (pointer a pointerre) létrehozása.
       // 'pp' egy int32_t** típusú változó, ami a 'ptr' memóriacímét tárolja.
@@ -107,9 +107,9 @@ Ez a koncepció különösen fontos a dinamikus memóriakezelésnél és a függ
       **pp = 30;
       
       printf("\n--- Modositas dupla pointeren keresztul (**pp = 30) ---\n");
-      printf("szam erteke: %" PRId32 "\n", szam);
-      printf("*ptr erteke: %" PRId32 "\n", *ptr);
-      printf("**pp erteke: %" PRId32 "\n", **pp);
+      printf("szam erteke: %d\n", szam);
+      printf("*ptr erteke: %d\n", *ptr);
+      printf("**pp erteke: %d\n", **pp);
       
       return 0;
   }
@@ -158,13 +158,13 @@ Eddig a tömbjeinket mindig fix mérettel deklaráltuk (pl. `int tomb[5]`). De m
       printf("Kerem adja meg az elemeket:\n");
       for (uint16_t i = 0; i < meret; i++) {
           printf("  %u. elem: ", i + 1);
-          scanf("%" SCNd32, &tomb[i]);
+          scanf("%d", &tomb[i]);
       }
       
       // Tárolt értékek kiírása
       printf("\nA tarolt ertekek:\n");
       for (uint16_t i = 0; i < meret; i++) {
-          printf("  tomb[%u] = %" PRId32 "\n", i, tomb[i]);
+          printf("  tomb[%u] = %d\n", i, tomb[i]);
       }
       
       // A dinamikusan foglalt memória felszabadítása.
@@ -226,7 +226,7 @@ C-ben a stringek valójában karaktertömbök (`char[]`), amelyek egy **nullakar
       uint16_t hossz = stringHossz(szoveg);
       
       printf("A szoveg: \"%s\"\n", szoveg);
-      printf("A szoveg hossza: %" PRIu16 " karakter\n", hossz);
+      printf("A szoveg hossza: %u karakter\n", hossz);
       
       return 0;
   }

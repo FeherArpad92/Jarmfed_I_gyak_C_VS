@@ -121,10 +121,9 @@ A függvényen belül a `*` (dereferáló) operátorral tudunk "belenyúlni" eze
       // mivel a függvény pointereket vár. Így a függvény közvetlenül tudja módosítani őket.
       negyzetEsKob(szam, &n, &k);
       
-      // PRId32 egy makró, ami a helyes formátumot ('d' vagy 'ld') illeszti be a fordítótól függően a 32-bites egészhez.
-      printf("A szám: %" PRId32 "\n", szam);
-      printf("Négyzete: %" PRId32 "\n", n);
-      printf("Harmadik hatványa: %" PRId32 "\n", k);
+      printf("A szám: %d\n", szam);
+      printf("Négyzete: %d\n", n);
+      printf("Harmadik hatványa: %d\n", k);
       
       return 0;
   }
@@ -182,7 +181,7 @@ A függvényen belül a `*` (dereferáló) operátorral tudunk "belenyúlni" eze
   ******************************************************************************/
   void tombKiir(int32_t tomb[], uint16_t meret) {
       for (uint16_t i = 0; i < meret; i++) {
-          printf("%" PRId32 " ", tomb[i]);
+          printf("%d ", tomb[i]);
       }
       printf("\n"); // A végén soremelést is teszünk
   }
@@ -246,28 +245,16 @@ A függvényen belül a `*` (dereferáló) operátorral tudunk "belenyúlni" eze
   }
 
   int main() {
-      // 100 karakteres puffer (array) elosztása a memóriában. 
-      // C-ben a sztringek mindig nullakarakterrel ('\0') végződnek, így valójában 99 hasznos karakter fér bele.
-      char bemenet[100];
+      // Előre definiált szöveg egy karaktertömbben.
+      // Fontos, hogy char[] legyen (nem const char*), mert a megfordító függvény módosítja a tartalmat.
+      char szoveg[] = "Hello Vilag";
       
-      printf("Kerem adjon meg egy szot vagy mondatot (max 99 karakter): ");
+      printf("Eredeti szoveg: %s\n", szoveg);
       
-      // Biztonságos szöveg beolvasás max 100 karakterig. 
-      // A scanf("%s", bemenet) itt veszélyes lenne (buffer overflow), és szóköznél meg is állna az olvasással.
-      // A stdin a "standard input" rövidítése (alapértelmezésben ez a billentyűzet).
-      if (fgets(bemenet, sizeof(bemenet), stdin) != NULL) {
-          // Az fgets hajlamos az enter (új sor karakter, '\n') lementésére is, ha marad neki hely. 
-          // Az strcspn függvény megkeresi az első '\n' pozícióját, és mi arra a helyre egy lezáró '\0'-t írunk,
-          // ezzel "levágva" az entert a szöveg legvégéről.
-          bemenet[strcspn(bemenet, "\n")] = '\0';
-          
-          printf("Eredeti szoveg: %s\n", bemenet);
-          
-          // A szöveget string mutatóként kapja meg a függvény, így az alatta lévő tömböt saját maga megeszi / átírja in-place.
-          szovegMegfordit(bemenet);
-          
-          printf("Megforditott szoveg: %s\n", bemenet);
-      }
+      // A szöveget karaktertömbként (pointer) kapja meg a függvény, így helyben (in-place) módosítja.
+      szovegMegfordit(szoveg);
+      
+      printf("Megforditott szoveg: %s\n", szoveg);
       
       return 0;
   }
