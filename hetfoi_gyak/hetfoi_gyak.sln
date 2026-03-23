@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gyak_1", "gyak_1\gyak_1.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gyak_2", "gyak_2\gyak_2.vcxproj", "{5D496393-1A71-4639-9FDD-696383FFCC1D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gyak_3", "gyak_3\gyak_3.vcxproj", "{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -55,6 +57,18 @@ Global
 		{5D496393-1A71-4639-9FDD-696383FFCC1D}.Release|x64.Build.0 = Release|x64
 		{5D496393-1A71-4639-9FDD-696383FFCC1D}.Release|x86.ActiveCfg = Release|Win32
 		{5D496393-1A71-4639-9FDD-696383FFCC1D}.Release|x86.Build.0 = Release|Win32
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Debug|ARM64.Build.0 = Debug|ARM64
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Debug|x64.ActiveCfg = Debug|x64
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Debug|x64.Build.0 = Debug|x64
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Debug|x86.ActiveCfg = Debug|Win32
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Debug|x86.Build.0 = Debug|Win32
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Release|ARM64.ActiveCfg = Release|ARM64
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Release|ARM64.Build.0 = Release|ARM64
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Release|x64.ActiveCfg = Release|x64
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Release|x64.Build.0 = Release|x64
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Release|x86.ActiveCfg = Release|Win32
+		{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
