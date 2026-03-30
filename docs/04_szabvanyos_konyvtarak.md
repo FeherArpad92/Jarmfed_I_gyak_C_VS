@@ -75,8 +75,6 @@ A mai feladatokhoz szükséges fejlécfájlok:
 <details markdown="1">
   <summary>Megoldás megjelenítése</summary>
 
-  A feladatot előre definiált stringekkel oldjuk meg, hogy a beginner és a haladó kód egyaránt könnyen követhető legyen.
-
   ```c
   #include <stdio.h>
   #include <string.h>
