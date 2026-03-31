@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "Y:\\Jarmfed_I_gyak_C_VS\\hetfoi_gyak\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}|gyak_3\\gyak_3.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\hetfoi_gyak\\gyak_3\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{28FF9E5A-ABAA-45E6-9D95-3A2D0B53A8C5}|gyak_3\\gyak_3.vcxproj|solutionrelative:gyak_3\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{E30B6F74-4396-4EC5-8020-F2906CF21D6F}|gyak_4\\gyak_4.vcxproj|Y:\\Jarmfed_I_gyak_C_VS\\hetfoi_gyak\\gyak_4\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E30B6F74-4396-4EC5-8020-F2906CF21D6F}|gyak_4\\gyak_4.vcxproj|solutionrelative:gyak_4\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,13 +20,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.c",
-              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\hetfoi_gyak\\gyak_3\\main.c",
-              "RelativeDocumentMoniker": "gyak_3\\main.c",
-              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\hetfoi_gyak\\gyak_3\\main.c",
-              "RelativeToolTip": "gyak_3\\main.c",
-              "ViewState": "AgIAACUAAAAAAAAAAIApwDEAAAApAAAAAAAAAA==",
+              "DocumentMoniker": "Y:\\Jarmfed_I_gyak_C_VS\\hetfoi_gyak\\gyak_4\\main.c",
+              "RelativeDocumentMoniker": "gyak_4\\main.c",
+              "ToolTip": "Y:\\Jarmfed_I_gyak_C_VS\\hetfoi_gyak\\gyak_4\\main.c",
+              "RelativeToolTip": "gyak_4\\main.c",
+              "ViewState": "AgIAAEAAAAAA9/////8QwEYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-03-23T16:35:01.965Z",
+              "WhenOpened": "2026-03-30T15:18:50.281Z",
               "EditorCaption": ""
             }
           ]
