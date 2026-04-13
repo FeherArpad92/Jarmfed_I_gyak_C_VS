@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define _USE_MATH_DEFINES
 #include <math.h>
-#include <corecrt_math_defines.h>
 
 /******************************************************************************
 * Macros
@@ -402,7 +402,7 @@ int main(void)
 
     sortList(&head);
 
-    printf("\nRendezett lista (csokkeno sorrendben a pontszamok alapjáa):\n");
+    printf("\nRendezett lista (csokkeno sorrendben a pontszamok alapjï¿½a):\n");
     printList(head);
 
     struct Node* current = head;
@@ -438,9 +438,9 @@ int main(void)
     struct Node_2* next_2;
     while (current_2 != NULL)
     {
-        next = current_2->next_2;
+        next_2 = current_2->next_2;
         free(current_2);
-        current_2 = next;
+        current_2 = next_2;
     }
 
     // 3.9. feladat
@@ -473,10 +473,7 @@ int main(void)
         current_3 = next_3;
     }
 
-    while (1)
-    {
-
-    }
+    return 0;
 }
 
 /******************************************************************************
@@ -488,8 +485,9 @@ int main(void)
 ******************************************************************************/
 void haromszog(double atfogo, double szog)
 {
-    float befogo_1 = sin(szog) * atfogo;
-    float befogo_2 = cos(szog) * atfogo;
+    double szog_rad = szog * M_PI / 180.0;
+    float befogo_1 = (float)(sin(szog_rad) * atfogo);
+    float befogo_2 = (float)(cos(szog_rad) * atfogo);
     float szog_3 = 180 - 90 - szog;
 
     printf("A haromszog befogoi %f, %f, a harmadik szog: %f\n", befogo_1, befogo_2, szog_3);
@@ -629,6 +627,7 @@ void negalt(char* str, char* bemenet, char* kimenet)
     {
         printf("A megadott ertek nem 8 bit-es!\n");
         hiba = 1;
+        return;
     }
 
     for (int i = 0; i < 8; i++)
@@ -955,7 +954,7 @@ void calculateAverageHeightAndTallest(struct Node_2* head_2, float* averageHeigh
         if (current_2->height > *maxHeight)
         {
             *maxHeight = current_2->height;
-            strcpy_s(tallestStudent, sizeof(tallestStudent), current_2->name_2);
+            strcpy_s(tallestStudent, 100, current_2->name_2);
         }
         current_2 = current_2->next_2;
     }
