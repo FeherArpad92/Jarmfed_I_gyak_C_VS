@@ -132,6 +132,11 @@
             opacity: 0.9;
         }
 
+        .supply-flow.reverse,
+        .button-flow.reverse {
+            animation-direction: reverse;
+        }
+
         .button-flow {
             fill: none;
             stroke: #17a2ff;
@@ -166,6 +171,41 @@
             background: rgba(255, 43, 43, 0.13);
         }
 
+        .jumper-toggle {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(32, 32, 34, 0);
+            border-radius: 0;
+            background: transparent;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0);
+            cursor: pointer;
+            pointer-events: auto;
+            padding: 0;
+        }
+
+        .jumper-toggle:hover {
+            border-color: #ff9c1ab3;
+        }
+
+        .jumper-pin {
+            position: absolute;
+            left: 50%;
+            width: 18px;
+            height: 28px;
+            border: 1px solid rgba(24, 26, 30, 0);
+            border-radius: 0px;
+            background: #ff9c1a;
+            box-shadow: none;
+            transform: translate(-50%, 0);
+            transition: transform 0.18s ease;
+        }
+
+        .jumper-toggle.down .jumper-pin {
+            transform: translate(-50%, 18px);
+        }
+
         .legend {
             padding: 12px 20px 16px;
             display: flex;
@@ -193,12 +233,12 @@
     <main class="frame">
         <header>
             <h1>ATmega128 gomb aram szimulacio</h1>
-            <div class="hint">A T17-T24 gombokra kattintva lathato az aram utja a processzor fele.</div>
+            <div class="hint" id="hint-text">A T17-T24 gombokra kattintva lathato az aram utja a processzor fele.</div>
         </header>
 
         <div class="status">
             <span class="dot"></span>
-            <span>Logika: a VCC ag folyamatosan aktiv, gombnyomasra aram indul a processzor fele.</span>
+            <span id="status-text">Logika: a VCC ag folyamatosan aktiv, gombnyomasra aram indul a processzor fele.</span>
         </div>
 
         <section class="viewport" aria-label="Interaktiv panel szimulacio">
@@ -249,6 +289,9 @@
                 ],
                 buttonY: 160,
                 buttonBusY: 174,
+                groundBusY: 206,
+                groundBusStartX: 186,
+                groundBusEndX: 446,
                 buttonX: [356, 332, 308, 283, 260, 236, 211, 187],
                 // Gomb lenyomas utan innen megy az aram a processzor fele.
                 toMcu: [
@@ -269,6 +312,13 @@
                 hotspotY: 155,
                 hotspotX: [368, 342, 318, 293, 270, 246, 221, 197],
                 hotspotSize: 32,
+                jumper: {
+                    x: 446,
+                    y: 135,
+                    width: 24,
+                    height: 50,
+                    initialDown: false,
+                },
             },
         };
 
@@ -278,19 +328,25 @@
         const viewport = document.querySelector(".viewport");
         const board = document.getElementById("board");
         const overlay = document.querySelector(".overlay");
+        const statusText = document.getElementById("status-text");
+        const hintText = document.getElementById("hint-text");
         board.style.width = `${TUNE.refWidth}px`;
         board.style.height = `${TUNE.refHeight}px`;
         overlay.setAttribute("viewBox", `0 0 ${TUNE.refWidth} ${TUNE.refHeight}`);
 
         const buttonState = new Array(CHANNELS).fill(false);
+        let jumperDown = TUNE.buttonNet.jumper.initialDown;
 
         const supplyLayer = document.getElementById("supply-layer");
         const buttonCurrentLayer = document.getElementById("button-current-layer");
         const controls = document.getElementById("controls");
 
         const supplyEls = [];
+        const returnRailEls = [];
         const buttonCurrentEls = [];
         const buttonEls = [];
+        let jumperEl;
+        let mainRailEl;
 
         function pctX(x) {
             return `${(x / TUNE.refWidth) * 100}%`;
@@ -338,6 +394,14 @@
             return [`M ${first.x} ${first.y}`, ...rest.map((p) => `L ${p.x} ${p.y}`)].join(" ");
         }
 
+        function getVccPath(reverseFlow) {
+            const points = TUNE.buttonNet.vccPath.map((p) => ({ x: p.x, y: p.y }));
+            if (reverseFlow && points.length) {
+                points[0].y += 50;
+            }
+            return points;
+        }
+
         function buildButtonPressPath(i) {
             const x = TUNE.buttonNet.buttonX[i];
             const y = TUNE.buttonNet.buttonY;
@@ -351,12 +415,47 @@
             ]);
         }
 
+        function initJumper() {
+            const cfg = TUNE.buttonNet.jumper;
+            const p = mapPoint({ x: cfg.x, y: cfg.y });
+
+            jumperEl = document.createElement("button");
+            jumperEl.type = "button";
+            jumperEl.className = "jumper-toggle";
+            jumperEl.title = "Tap jumper fel/le";
+            jumperEl.setAttribute("aria-label", "Tap jumper fel vagy le");
+            jumperEl.style.left = pctX(p.x - cfg.width / 2);
+            jumperEl.style.top = pctY(p.y - cfg.height / 2);
+            jumperEl.style.width = pctX(cfg.width);
+            jumperEl.style.height = pctY(cfg.height);
+            jumperEl.innerHTML = '<span class="jumper-pin"></span>';
+            jumperEl.addEventListener("click", () => {
+                jumperDown = !jumperDown;
+                render();
+            });
+            controls.appendChild(jumperEl);
+        }
+
         function initButtonPowerNetwork() {
             const rail = document.createElementNS("http://www.w3.org/2000/svg", "path");
             rail.setAttribute("class", "supply-flow");
-            rail.setAttribute("d", toSvgPath(TUNE.buttonNet.vccPath));
+            rail.setAttribute("d", toSvgPath(getVccPath(false)));
             supplyLayer.appendChild(rail);
             supplyEls.push(rail);
+            mainRailEl = rail;
+
+            // Also sin: inverz modban ezen folyik vissza az aram a jumper fele.
+            const returnRail = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            returnRail.setAttribute("class", "supply-flow");
+            returnRail.setAttribute(
+                "d",
+                toSvgPath([
+                    { x: TUNE.buttonNet.groundBusStartX, y: TUNE.buttonNet.groundBusY },
+                    { x: TUNE.buttonNet.groundBusEndX, y: TUNE.buttonNet.groundBusY },
+                ]),
+            );
+            supplyLayer.appendChild(returnRail);
+            returnRailEls.push(returnRail);
 
             for (let i = 0; i < CHANNELS; i += 1) {
                 const x = TUNE.buttonNet.buttonX[i];
@@ -383,6 +482,7 @@
 
         function initLayers() {
             initButtonPowerNetwork();
+            initJumper();
 
             for (let i = 0; i < CHANNELS; i += 1) {
                 const p = mapHotspotPoint({
@@ -410,16 +510,37 @@
         }
 
         function render() {
-            const supplyOn = TUNE.buttonNet.jumperToVcc;
+            const reverseFlow = jumperDown;
+            const supplyOn = true;
+
+            statusText.textContent = reverseFlow
+                ? "Logika: az also jumper-allasban a CPU felol folyamatosan erkezik az aram a gombok fele, es csak az aktiv gombnal folyik tovabb a fold fele."
+                : "Logika: a VCC ag folyamatosan aktiv, gombnyomasra aram indul a processzor fele.";
+            hintText.textContent = reverseFlow
+                ? "A jumper also allasaban az alaparam mindig latszik a gombokig, es csak aktiv gombnal megy tovabb a fold fele."
+                : "A T17-T24 gombokra kattintva lathato az aram utja a processzor fele.";
+
+            if (jumperEl) {
+                jumperEl.classList.toggle("down", reverseFlow);
+                jumperEl.setAttribute("aria-pressed", String(reverseFlow));
+            }
+
+            if (mainRailEl) {
+                mainRailEl.setAttribute("d", toSvgPath(getVccPath(reverseFlow)));
+            }
 
             for (const supplyEl of supplyEls) {
-                supplyEl.classList.toggle("on", supplyOn);
+                const supplyVisible = supplyOn;
+                supplyEl.classList.toggle("on", supplyVisible);
+                supplyEl.classList.toggle("reverse", reverseFlow);
             }
+
 
             for (let i = 0; i < CHANNELS; i += 1) {
                 buttonEls[i].classList.toggle("active", buttonState[i]);
-                const buttonPressedFlow = supplyOn && buttonState[i];
+                const buttonPressedFlow = buttonState[i];
                 buttonCurrentEls[i].classList.toggle("on", buttonPressedFlow);
+                buttonCurrentEls[i].classList.toggle("reverse", reverseFlow);
             }
         }
 
