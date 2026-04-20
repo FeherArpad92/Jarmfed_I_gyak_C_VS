@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C8051F040 interaktiv szimulacio</title>
+    <style>
+        :root {
+            --bg: #e7e7e7;
+            --card: #ffffff;
+            --ink: #202022;
+            --muted: #676a70;
+            --accent: #0b6e4f;
+            --on: #ff2b2b;
+            --off: rgba(255, 43, 43, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            background: radial-gradient(circle at 20% 10%, #f4f4f4, #dbdbdb 60%, #cfcfcf);
+            color: var(--ink);
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .frame {
+            width: min(1200px, 100%);
+            background: var(--card);
+            border: 1px solid #cfd2d8;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e4e4e8;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 0.2px;
+        }
+
+        .hint {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .status {
+            padding: 10px 20px;
+            border-bottom: 1px solid #e4e4e8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #1e3c2b;
+            background: linear-gradient(90deg, #eaf8ef, #f4fbf6);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #18b26f;
+            box-shadow: 0 0 8px rgba(24, 178, 111, 0.65);
+        }
+
+        .viewport {
+            position: relative;
+            width: 100%;
+            height: 550px;
+            overflow: hidden;
+            background: var(--bg);
+        }
+
+        .board {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1400px;
+            height: 1400px;
+            transform-origin: top left;
+            user-select: none;
+        }
+
+        .board img {
+            position: absolute;
+            inset: 0;
+            width: 84%;
+            object-fit: cover;
+            object-position: top left;
+            pointer-events: none;
+        }
+
+        .overlay,
+        .controls {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 84%;
+            height: 84%;
+        }
+
+        .controls {
+            pointer-events: none;
+        }
+
+        .flow {
+            fill: none;
+            stroke: #ffbd4a;
+            stroke-width: 5;
+            stroke-dasharray: 10 4;
+            animation: flowMove 0.65s linear infinite;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+        }
+
+        .flow.on {
+            opacity: 0.95;
+        }
+
+
+        .led {
+            fill: var(--off);
+            stroke: #ff2b2b;
+            stroke-width: 2;
+            transition: fill 0.2s ease, filter 0.2s ease;
+        }
+
+        .led.on {
+            fill: var(--on);
+            filter: drop-shadow(0 0 8px rgba(255, 43, 43, 0.95));
+        }
+
+        .btn-hotspot,
+        .dip-hotspot {
+            position: absolute;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.01);
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .btn-hotspot {
+            pointer-events: auto;
+        }
+
+        .btn-hotspot:hover {
+            border-color: rgba(11, 110, 79, 0.55);
+            background: rgba(11, 110, 79, 0.08);
+        }
+
+        .btn-hotspot.active {
+            border-color: rgba(255, 43, 43, 0.85);
+            background: rgba(255, 43, 43, 0.13);
+        }
+
+        .dip-bg {
+            fill: #1a1a1a;
+            cursor: pointer;
+        }
+
+        .dip-slider {
+            fill: #e87820;
+            cursor: pointer;
+        }
+
+        .dip-group:hover .dip-bg {
+            fill: #2e2e2e;
+        }
+
+        .legend {
+            padding: 12px 20px 16px;
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .legend strong {
+            color: var(--ink);
+        }
+
+        @keyframes flowMove {
+            from {
+                stroke-dashoffset: 14;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="frame">
+        <header>
+            <h1>C8051F040 Port0 LED/DIP szimulacio</h1>
+            <div class="hint">Kattints a P0.x jelolesekre es a SW9 DIP kapcsolokra.</div>
+        </header>
+
+        <div class="status">
+            <span class="dot"></span>
+            <span>Logika: LED akkor vilagit, ha <strong>P0.x = 1</strong> es a megfelelo <strong>DIP = ON</strong>.</span>
+        </div>
+
+        <section class="viewport" aria-label="Interaktiv panel szimulacio">
+            <div class="board" id="board">
+                <img src="big8051-manual-v102.svg" alt="C8051F040 panel sematikus rajz" />
+
+                <svg class="overlay" viewBox="0 0 1400 1400" preserveAspectRatio="none" aria-hidden="true">
+                    <g id="flow-layer"></g>
+                    <g id="led-layer"></g>
+                    <g id="dip-layer"></g>
+                </svg>
+
+                <div class="controls" id="controls"></div>
+            </div>
+        </section>
+
+        <div class="legend">
+            <span><strong>P0.x kattintas:</strong> mikrokontroller kimenet billentes</span>
+            <span><strong>SW9 kattintas:</strong> DIP kapcsolo billentes</span>
+            <span><strong>Zold szaggatott vonal:</strong> aramfolyas</span>
+        </div>
+    </main>
+
+    <script>
+        const CHANNELS = 8;
+
+        // Itt tudod kezzel allitani az osszes fontos parametert.
+        const TUNE = {
+            refWidth: 1400,
+            refHeight: 1400,
+
+            viewport: {
+                zoom: 2.2,
+                alignX: 0.5,
+                alignY: 0.0,
+            },
+
+
+            led: {
+                x: 707,
+                radius: 18,
+                y: [62, 118, 175, 232, 289, 345, 401, 457],
+            },
+
+            p0: {
+                x: 650,
+                width: 30,
+                height: 26,
+                topOffset: -13,
+                y: [54, 107, 161, 218, 275, 331, 387, 443],
+            },
+
+            dip: {
+                x: 960,
+                width: 30,
+                height: 13,
+                topOffset: -10,
+                y: [66, 80, 94, 108, 122, 136, 150, 164],
+            },
+
+            // Aramut utvonal (4 tores): start -> tores1 -> tores2 -> tores3 -> tores4 -> DIP
+            flow: {
+                startX: [641, 641, 641, 641, 641, 641, 641, 641],
+                bend1: [
+                    { x: 930, y: 62 },
+                    { x: 764, y: 118 },
+                    { x: 770, y: 175 },
+                    { x: 776, y: 232 },
+                    { x: 784, y: 289 },
+                    { x: 790, y: 345 },
+                    { x: 798, y: 401 },
+                    { x: 806, y: 457 },
+                ],
+                bend2: [
+                    { x: 930, y: 62 },
+                    { x: 764, y: 78 },
+                    { x: 770, y: 92 },
+                    { x: 776, y: 106 },
+                    { x: 784, y: 120 },
+                    { x: 790, y: 134 },
+                    { x: 798, y: 148 },
+                    { x: 806, y: 162 },
+                ],
+                bend3: [
+                    { x: 930, y: 62 },
+                    { x: 855, y: 78 },
+                    { x: 855, y: 92 },
+                    { x: 855, y: 106 },
+                    { x: 855, y: 120 },
+                    { x: 855, y: 134 },
+                    { x: 855, y: 148 },
+                    { x: 855, y: 162 },
+                ],
+                bend4: [
+                    { x: 930, y: 62 },
+                    { x: 855, y: 62 },
+                    { x: 855, y: 62 },
+                    { x: 855, y: 62 },
+                    { x: 855, y: 62 },
+                    { x: 855, y: 62 },
+                    { x: 855, y: 62 },
+                    { x: 855, y: 62 },
+                ],
+                entryX: [945, 945, 945, 945, 945, 945, 945, 945],
+            },
+        };
+
+        // Konzolbol is allithato: window.boardTune
+        window.boardTune = TUNE;
+
+        const viewport = document.querySelector(".viewport");
+        const board = document.getElementById("board");
+        const overlay = document.querySelector(".overlay");
+        board.style.width = `${TUNE.refWidth}px`;
+        board.style.height = `${TUNE.refHeight}px`;
+        overlay.setAttribute("viewBox", `0 0 ${TUNE.refWidth} ${TUNE.refHeight}`);
+
+        const p0State = new Array(CHANNELS).fill(false);
+        const dipState = new Array(CHANNELS).fill(false);
+
+        const flowLayer = document.getElementById("flow-layer");
+        const ledLayer = document.getElementById("led-layer");
+        const controls = document.getElementById("controls");
+
+        const flowEls = [];
+        const ledEls = [];
+        const p0Els = [];
+        const dipSliders = [];
+
+        function pctX(x) {
+            return `${(x / TUNE.refWidth) * 100}%`;
+        }
+
+        function pctY(y) {
+            return `${(y / TUNE.refHeight) * 100}%`;
+        }
+
+        function applyResponsiveScale() {
+            const widthScale = viewport.clientWidth / TUNE.refWidth;
+            const heightScale = viewport.clientHeight / TUNE.refHeight;
+            const scale = Math.min(widthScale, heightScale) * TUNE.viewport.zoom;
+            const scaledWidth = TUNE.refWidth * scale;
+            const scaledHeight = TUNE.refHeight * scale;
+            const offsetX = (viewport.clientWidth - scaledWidth) * TUNE.viewport.alignX;
+            const offsetY = (viewport.clientHeight - scaledHeight) * TUNE.viewport.alignY;
+
+            board.style.left = `${offsetX}px`;
+            board.style.top = `${offsetY}px`;
+            board.style.transform = `scale(${scale})`;
+        }
+
+        function buildFlowPath(i) {
+            const y = TUNE.led.y[i];
+            const b1 = TUNE.flow.bend1[i];
+            const b2 = TUNE.flow.bend2[i];
+            const b3 = TUNE.flow.bend3[i];
+            const b4 = TUNE.flow.bend4[i];
+
+            return [
+                `M ${TUNE.flow.startX[i]} ${y}`,
+                `L ${b1.x} ${b1.y}`,
+                `L ${b2.x} ${b2.y}`,
+                `L ${b3.x} ${b3.y}`,
+                `L ${b4.x} ${b4.y}`,
+                `L ${TUNE.flow.entryX[i]} ${b4.y}`,
+            ].join(" ");
+        }
+
+        function initLayers() {
+            for (let i = 0; i < CHANNELS; i += 1) {
+                const y = TUNE.led.y[i];
+
+                const flow = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                flow.setAttribute("class", "flow");
+                flow.setAttribute("d", buildFlowPath(i));
+                flowLayer.appendChild(flow);
+                flowEls.push(flow);
+
+                const led = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                led.setAttribute("class", "led");
+                led.setAttribute("cx", String(TUNE.led.x));
+                led.setAttribute("cy", String(y));
+                led.setAttribute("r", String(TUNE.led.radius));
+                ledLayer.appendChild(led);
+                ledEls.push(led);
+
+                const p0 = document.createElement("button");
+                p0.type = "button";
+                p0.className = "btn-hotspot";
+                p0.style.left = pctX(TUNE.p0.x);
+                p0.style.top = pctY(TUNE.p0.y[i] + TUNE.p0.topOffset);
+                p0.style.width = pctX(TUNE.p0.width);
+                p0.style.height = pctY(TUNE.p0.height);
+                p0.title = `P0.${i}`;
+                p0.setAttribute("aria-label", `P0.${i} kapcsolas`);
+                p0.addEventListener("click", () => {
+                    p0State[i] = !p0State[i];
+                    render();
+                });
+                controls.appendChild(p0);
+                p0Els.push(p0);
+
+                const dipLayer = document.getElementById("dip-layer");
+                const dx = TUNE.dip.x;
+                const dy = TUNE.dip.y[i] + TUNE.dip.topOffset;
+                const dw = TUNE.dip.width;
+                const dh = TUNE.dip.height;
+
+                const dipGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                dipGroup.setAttribute("class", "dip-group");
+
+                const dipBg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                dipBg.setAttribute("class", "dip-bg");
+                dipBg.setAttribute("x", dx);
+                dipBg.setAttribute("y", dy);
+                dipBg.setAttribute("width", dw);
+                dipBg.setAttribute("height", dh);
+                dipBg.setAttribute("rx", "2");
+
+                const dipSlider = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                dipSlider.setAttribute("class", "dip-slider");
+                dipSlider.setAttribute("x", dx + 1);
+                dipSlider.setAttribute("y", dy + 1);
+                dipSlider.setAttribute("width", dw / 2 - 2);
+                dipSlider.setAttribute("height", dh - 2);
+                dipSlider.setAttribute("rx", "2");
+
+                dipGroup.appendChild(dipBg);
+                dipGroup.appendChild(dipSlider);
+                dipGroup.addEventListener("click", () => {
+                    dipState[i] = !dipState[i];
+                    render();
+                });
+                dipLayer.appendChild(dipGroup);
+                dipSliders.push({ el: dipSlider, baseX: dx + 1, onX: dx + dw / 2 + 1 });
+            }
+        }
+
+        function render() {
+            const masterPortEnable = dipState[0];
+
+            for (let i = 0; i < CHANNELS; i += 1) {
+                const channelEnabled = masterPortEnable;
+                const on = p0State[i] && channelEnabled;
+
+                flowEls[i].classList.toggle("on", on);
+                ledEls[i].classList.toggle("on", on);
+                p0Els[i].classList.toggle("active", p0State[i]);
+
+                const s = dipSliders[i];
+                s.el.setAttribute("x", dipState[i] ? s.onX : s.baseX);
+            }
+        }
+
+        initLayers();
+        render();
+        applyResponsiveScale();
+
+        window.addEventListener("resize", applyResponsiveScale);
+    </script>
+</body>
+</html>

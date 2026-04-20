@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATmega128 gomb szimulacio</title>
+    <style>
+        :root {
+            --bg: #e7e7e7;
+            --card: #ffffff;
+            --ink: #202022;
+            --muted: #676a70;
+            --accent: #0b6e4f;
+            --on: #ff2b2b;
+            --off: rgba(255, 43, 43, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            background: radial-gradient(circle at 20% 10%, #f4f4f4, #dbdbdb 60%, #cfcfcf);
+            color: var(--ink);
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .frame {
+            width: min(1200px, 100%);
+            background: var(--card);
+            border: 1px solid #cfd2d8;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e4e4e8;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 0.2px;
+        }
+
+        .hint {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .status {
+            padding: 10px 20px;
+            border-bottom: 1px solid #e4e4e8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #1e3c2b;
+            background: linear-gradient(90deg, #eaf8ef, #f4fbf6);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #18b26f;
+            box-shadow: 0 0 8px rgba(24, 178, 111, 0.65);
+        }
+
+        .viewport {
+            position: relative;
+            width: 100%;
+            height: 550px;
+            overflow: hidden;
+            background: var(--bg);
+        }
+
+        .board {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1400px;
+            height: 1400px;
+            transform-origin: top left;
+            user-select: none;
+        }
+
+        .board img {
+            position: absolute;
+            inset: 0;
+            width: 84%;
+            object-fit: cover;
+            object-position: top left;
+            pointer-events: none;
+        }
+
+        .overlay,
+        .controls {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 84%;
+            height: 84%;
+        }
+
+        .controls {
+            pointer-events: none;
+        }
+
+        .supply-flow {
+            fill: none;
+            stroke: #17a2ff;
+            stroke-width: 8;
+            stroke-dasharray: 8 6;
+            animation: flowMove 0.7s linear infinite;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+        }
+
+        .supply-flow.on {
+            opacity: 0.9;
+        }
+
+        .button-flow {
+            fill: none;
+            stroke: #17a2ff;
+            stroke-width: 8;
+            stroke-dasharray: 7 5;
+            animation: flowMove 0.55s linear infinite;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+        }
+
+        .button-flow.on {
+            opacity: 0.95;
+        }
+
+        .btn-hotspot {
+            position: absolute;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.01);
+            transition: background 0.15s ease, border-color 0.15s ease;
+            pointer-events: auto;
+        }
+
+        .btn-hotspot:hover {
+            border-color: rgba(11, 110, 79, 0.55);
+            background: rgba(11, 110, 79, 0.08);
+        }
+
+        .btn-hotspot.active {
+            border-color: rgba(255, 43, 43, 0.85);
+            background: rgba(255, 43, 43, 0.13);
+        }
+
+        .legend {
+            padding: 12px 20px 16px;
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .legend strong {
+            color: var(--ink);
+        }
+
+        @keyframes flowMove {
+            from {
+                stroke-dashoffset: 14;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="frame">
+        <header>
+            <h1>ATmega128 gomb aram szimulacio</h1>
+            <div class="hint">A T17-T24 gombokra kattintva lathato az aram utja a processzor fele.</div>
+        </header>
+
+        <div class="status">
+            <span class="dot"></span>
+            <span>Logika: a VCC ag folyamatosan aktiv, gombnyomasra aram indul a processzor fele.</span>
+        </div>
+
+        <section class="viewport" aria-label="Interaktiv panel szimulacio">
+            <div class="board" id="board">
+                <img src="bigavr6-manual-button.svg" alt="ATmega128 gombos panel sematikus rajz" />
+
+                <svg class="overlay" viewBox="0 0 1400 1400" preserveAspectRatio="none" aria-hidden="true">
+                    <g id="supply-layer"></g>
+                    <g id="button-current-layer"></g>
+                </svg>
+
+                <div class="controls" id="controls"></div>
+            </div>
+        </section>
+
+        <div class="legend">
+            <span><strong>T17-T24 kattintas:</strong> gomb lenyomas/felengedes</span>
+            <span><strong>Kek szaggatott vonal:</strong> tap es gombaram utja</span>
+        </div>
+    </main>
+
+    <script>
+        const CHANNELS = 8;
+
+        const TUNE = {
+            refWidth: 1400,
+            refHeight: 1400,
+
+            viewport: {
+                zoom: 2.2,
+                alignX: 0.5,
+                alignY: 0.0,
+            },
+
+            // Gombos panel taphalozat (ATmega): ezek a koordinatak user altal megadott pontok.
+            buttonNet: {
+                jumperToVcc: true,
+                scaleX: 2.8,
+                scaleY: 2.8,
+                offsetX: 0,
+                offsetY: 0,
+                vccPath: [
+                    { x: 446, y: 122 },
+                    { x: 446, y: 139 },
+                    { x: 416, y: 139 },
+                    { x: 416, y: 174 },
+                    { x: 186, y: 174 },
+                ],
+                buttonY: 160,
+                buttonBusY: 174,
+                buttonX: [356, 332, 308, 283, 260, 236, 211, 187],
+                // Gomb lenyomas utan innen megy az aram a processzor fele.
+                toMcu: [
+                    { x: 160, y: 124 },
+                    { x: 160, y: 118 },
+                    { x: 160, y: 112 },
+                    { x: 160, y: 106 },
+                    { x: 160, y: 100 },
+                    { x: 160, y: 94 },
+                    { x: 160, y: 88 },
+                    { x: 160, y: 82 },
+                ],
+                // A kattinthato teruletek kulon allithatok, fuggetlenul az aramutvonaltol.
+                hotspotScaleX: 2.8,
+                hotspotScaleY: 2.8,
+                hotspotOffsetX: 0,
+                hotspotOffsetY: 0,
+                hotspotY: 155,
+                hotspotX: [368, 342, 318, 293, 270, 246, 221, 197],
+                hotspotSize: 32,
+            },
+        };
+
+        // Konzolbol is allithato: window.boardTune
+        window.boardTune = TUNE;
+
+        const viewport = document.querySelector(".viewport");
+        const board = document.getElementById("board");
+        const overlay = document.querySelector(".overlay");
+        board.style.width = `${TUNE.refWidth}px`;
+        board.style.height = `${TUNE.refHeight}px`;
+        overlay.setAttribute("viewBox", `0 0 ${TUNE.refWidth} ${TUNE.refHeight}`);
+
+        const buttonState = new Array(CHANNELS).fill(false);
+
+        const supplyLayer = document.getElementById("supply-layer");
+        const buttonCurrentLayer = document.getElementById("button-current-layer");
+        const controls = document.getElementById("controls");
+
+        const supplyEls = [];
+        const buttonCurrentEls = [];
+        const buttonEls = [];
+
+        function pctX(x) {
+            return `${(x / TUNE.refWidth) * 100}%`;
+        }
+
+        function pctY(y) {
+            return `${(y / TUNE.refHeight) * 100}%`;
+        }
+
+        function applyResponsiveScale() {
+            const widthScale = viewport.clientWidth / TUNE.refWidth;
+            const heightScale = viewport.clientHeight / TUNE.refHeight;
+            const scale = Math.min(widthScale, heightScale) * TUNE.viewport.zoom;
+            const scaledWidth = TUNE.refWidth * scale;
+            const scaledHeight = TUNE.refHeight * scale;
+            const offsetX = (viewport.clientWidth - scaledWidth) * TUNE.viewport.alignX;
+            const offsetY = (viewport.clientHeight - scaledHeight) * TUNE.viewport.alignY;
+
+            board.style.left = `${offsetX}px`;
+            board.style.top = `${offsetY}px`;
+            board.style.transform = `scale(${scale})`;
+        }
+
+        function mapPoint(p) {
+            return {
+                x: p.x * TUNE.buttonNet.scaleX + TUNE.buttonNet.offsetX,
+                y: p.y * TUNE.buttonNet.scaleY + TUNE.buttonNet.offsetY,
+            };
+        }
+
+        function mapHotspotPoint(p) {
+            return {
+                x: p.x * TUNE.buttonNet.hotspotScaleX + TUNE.buttonNet.hotspotOffsetX,
+                y: p.y * TUNE.buttonNet.hotspotScaleY + TUNE.buttonNet.hotspotOffsetY,
+            };
+        }
+
+        function toSvgPath(points) {
+            if (!points.length) {
+                return "";
+            }
+
+            const mapped = points.map(mapPoint);
+            const [first, ...rest] = mapped;
+            return [`M ${first.x} ${first.y}`, ...rest.map((p) => `L ${p.x} ${p.y}`)].join(" ");
+        }
+
+        function buildButtonPressPath(i) {
+            const x = TUNE.buttonNet.buttonX[i];
+            const y = TUNE.buttonNet.buttonY;
+            const mcu = TUNE.buttonNet.toMcu[i];
+
+            return toSvgPath([
+                { x:x+3, y: y - 10 },           // Start pont: 15 pixellel magasabban
+                { x, y: y - 10 },    // Első töréspont: balra
+                { x: x, y: mcu.y },     // Második töréspont: függőlegesen az MCU-hoz
+                mcu,                         // Végpont
+            ]);
+        }
+
+        function initButtonPowerNetwork() {
+            const rail = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            rail.setAttribute("class", "supply-flow");
+            rail.setAttribute("d", toSvgPath(TUNE.buttonNet.vccPath));
+            supplyLayer.appendChild(rail);
+            supplyEls.push(rail);
+
+            for (let i = 0; i < CHANNELS; i += 1) {
+                const x = TUNE.buttonNet.buttonX[i];
+
+                const feed = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                feed.setAttribute("class", "supply-flow");
+                feed.setAttribute(
+                    "d",
+                    toSvgPath([
+                        { x, y: TUNE.buttonNet.buttonBusY },
+                        { x, y: TUNE.buttonNet.buttonY },
+                    ]),
+                );
+                supplyLayer.appendChild(feed);
+                supplyEls.push(feed);
+
+                const pressFlow = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                pressFlow.setAttribute("class", "button-flow");
+                pressFlow.setAttribute("d", buildButtonPressPath(i));
+                buttonCurrentLayer.appendChild(pressFlow);
+                buttonCurrentEls.push(pressFlow);
+            }
+        }
+
+        function initLayers() {
+            initButtonPowerNetwork();
+
+            for (let i = 0; i < CHANNELS; i += 1) {
+                const p = mapHotspotPoint({
+                    x: TUNE.buttonNet.hotspotX[i],
+                    y: TUNE.buttonNet.hotspotY,
+                });
+                const size = TUNE.buttonNet.hotspotSize;
+
+                const buttonEl = document.createElement("button");
+                buttonEl.type = "button";
+                buttonEl.className = "btn-hotspot";
+                buttonEl.style.left = pctX(p.x - size / 2);
+                buttonEl.style.top = pctY(p.y - size / 2);
+                buttonEl.style.width = pctX(size);
+                buttonEl.style.height = pctY(size);
+                buttonEl.title = `T${17 + i}`;
+                buttonEl.setAttribute("aria-label", `T${17 + i} gomb lenyomas`);
+                buttonEl.addEventListener("click", () => {
+                    buttonState[i] = !buttonState[i];
+                    render();
+                });
+                controls.appendChild(buttonEl);
+                buttonEls.push(buttonEl);
+            }
+        }
+
+        function render() {
+            const supplyOn = TUNE.buttonNet.jumperToVcc;
+
+            for (const supplyEl of supplyEls) {
+                supplyEl.classList.toggle("on", supplyOn);
+            }
+
+            for (let i = 0; i < CHANNELS; i += 1) {
+                buttonEls[i].classList.toggle("active", buttonState[i]);
+                const buttonPressedFlow = supplyOn && buttonState[i];
+                buttonCurrentEls[i].classList.toggle("on", buttonPressedFlow);
+            }
+        }
+
+        initLayers();
+        render();
+        applyResponsiveScale();
+
+        window.addEventListener("resize", applyResponsiveScale);
+    </script>
+</body>
+</html>
